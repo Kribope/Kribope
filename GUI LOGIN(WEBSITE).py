@@ -1,0 +1,274 @@
+from tkinter import *
+from tkinter import messagebox
+import ast
+
+root=Tk()
+root.title("MY UPCOMING WEBSITE ('UNKNOWN')")
+root.geometry('1080x720')
+root.configure(bg='#294D61')
+root.resizable(False,False)  
+
+def sign_in():
+    username = user.get()
+    password = code.get()
+
+    file = open('datasheet.txt','r')
+    d = file.read()
+    r=ast.literal_eval(d)
+    file.close()
+
+    print(r.keys())
+    print(r.values())
+
+    if username in r.keys() and password == r[username]:
+
+        messagebox.showinfo('Sucessfully Login','You have Sucessfully Login!')
+        def web():        
+                screen=(root)
+                screen.title("UNKNOWN WEBSITE")
+                screen.geometry('1080x720')
+                screen.resizable(False,False)
+                screen.config(bg='#294D61')
+
+                frame=Frame(screen,width=1080,height=720,bg='#294D61')
+                frame.place(x=0,y=0)
+
+                contactclick = PhotoImage(file = "C:\\Users\\Administrator\\Desktop\\Python GUI\\ImagePy\\CONTACTCLICK.png")
+                aboutclick = PhotoImage(file = "C:\\Users\\Administrator\\Desktop\\Python GUI\\ImagePy\\ABOUT.png")
+                exitclick = PhotoImage(file = "C:\\Users\\Administrator\\Desktop\\Python GUI\\ImagePy\\exit.png")
+                homeclick = PhotoImage(file = "C:\\Users\\Administrator\\Desktop\\Python GUI\\ImagePy\\HOME.png")
+
+                WEBSITE = PhotoImage(file='C:\\Users\\Administrator\\Desktop\\Python GUI\\ImagePy\\DARKSITE.png')
+                Label(screen,image=WEBSITE,bg='#294D61').place(x=850,y=-50)
+                
+                Button(screen,image = homeclick,bg = '#294D61',command=web,border = 0).place(x=50, y=50)
+                #======================================@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                def about():
+                    screen2=(root)
+                    screen2.title("UNKNOWN WEBSITE")
+                    screen2.geometry('1080x720')
+                    screen2.resizable(False,False)
+                    screen2.config(bg='#294D61')
+
+                    frame=Frame(screen2,width=1080,height=720,bg='#294D61')
+                    frame.place(x=0,y=0)
+
+                    text=Label(frame,text='HINDI PATO TAPOS',fg='White',bg='#294D61',font=('Microsoft YaHei UI Light',11,'bold'))
+                    text.place(x=500, y=250)
+
+                    Button(screen,image = homeclick,bg = '#294D61',command=web,border = 0).place(x=970, y=620)
+                
+                    screen2.mainloop()
+
+                #ABOUT
+                Button(screen,image = aboutclick,bg = '#294D61',command= about,border = 0).place(x=970, y=520)
+               #======================================@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                def contact():
+                        screen1=(root)
+                        screen1.title("UNKNOWN WEBSITE")
+                        screen1.geometry('1080x720')
+                        screen1.resizable(False,False)
+                        screen1.config(bg='#294D61')
+
+                        frame=Frame(screen1,width=1080,height=720,bg='#294D61')
+                        frame.place(x=0,y=0)
+
+                        CONTACT = PhotoImage(file='C:\\Users\\Administrator\\Desktop\\Python GUI\\ImagePy\\CONTACT.png')
+                        Label(screen,image=CONTACT,bg='#294D61').place(x=50,y=50)
+
+                        frame=Frame(screen1,width=720,height=320,bg='#072E33')
+                        frame.place(x=240,y=120)
+
+                        text=Label(frame,text='CONTACT ME',fg='White',bg='#072E33',font=('Microsoft YaHei UI Light',15,'bold'))
+                        text.place(x=25, y=25)
+
+                        text2=Label(frame,text='Contact me on FACEBOOK, TELEGRAM, WHATSAPP or DISCORD',fg='White',bg='#072E33',font=('Microsoft YaHei UI Light',11,'bold'))
+                        text2.place(x=25, y=55)
+
+                        text3=Label(frame,text='Phone Number: +639386756635',fg='White',bg='#072E33',font=('Microsoft YaHei UI Light',12,'bold'))
+                        text3.place(x=25, y=90)
+
+                        text4=Label(frame,text='Facebook: Ivan Emmanuel Dadacay',fg='White',bg='#072E33',font=('Microsoft YaHei UI Light',12,'bold'))
+                        text4.place(x=25, y=140)
+
+                        text5=Label(frame,text='Telegram: ivan_dadacay',fg='White',bg='#072E33',font=('Microsoft YaHei UI Light',12,'bold'))
+                        text5.place(x=25, y=190)
+
+                        text6=Label(frame,text='Discord: iemmanuel#1221',fg='White',bg='#072E33',font=('Microsoft YaHei UI Light',12,'bold'))
+                        text6.place(x=25, y=240)
+
+                        Button(screen,image = homeclick,bg = '#294D61',command=web,border = 0).place(x=970, y=620)
+
+                        screen1.mainloop()
+
+                #CONTACT
+                Button(screen,image = contactclick, command = contact, bg = '#294D61',border = 0).place(x=970, y=420)
+
+                #======================================@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                #EXIT
+                Button(screen,image = exitclick,bg = '#294D61',command=screen.destroy,border = 0).place(x=965, y=620)
+
+                screen.mainloop()
+        web()
+    else:
+        messagebox.showerror('Invalid','Invalid Username or Password')
+    
+def signup_command():
+    window=Toplevel(root)
+    window.title("SIGN UP")
+    window.geometry('1080x720')
+    window.configure(bg='#294D61')
+    window.resizable(False,False)
+
+    def signup():
+        username=user.get()
+        password=code.get()
+        confirm_password=confirm_pass.get()
+
+        if password==confirm_password:
+            try:
+                file=open('datasheet.txt','r+')
+                d=file.read()
+                r=ast.literal_eval(d)
+
+                dict2={username:password}
+                r.update(dict2)
+                file.truncate(0)
+                file.close()
+
+                file=open('datasheet.txt','w')
+                w=file.write(str(r))
+
+
+                messagebox.showinfo('Sign up','Successfully Sign Up')
+
+            except:
+                file=open('datasheet.txt','w')
+                pp=str({'Username':'Password'})
+                file.write(pp)
+                file.close()
+        else:
+            messagebox.showerror('Invalid','Both Password should match')
+
+    frame=Frame(window,width=1080,height=720,bg='#294D61')
+    frame.place(x=0,y=0)
+
+    img = PhotoImage(file='C:\\Users\\Administrator\\Desktop\\Python GUI\\ImagePy\\DARKSITE.png')
+    Label(window,image=img,bg='#294D61').place(x=430,y=25)
+
+    frame2=Frame(window,width=480,height=480,bg='Black')
+    frame2.place(x=320,y=230)
+
+
+    def on_enter(e):
+        user.delete(0, 'end')
+
+    def on_leave(e):
+        name = user.get()
+        if name == '':
+            user.insert(0,'Username')
+
+    Label(frame2,text='CREATE ACCOUNT',fg='Orange',bg='Black',font=('Cooper Black',18)).place(x=125,y=25)
+    text=Label(frame2,text='USERNAME',fg='White',bg='Black',font=('Microsoft YaHei UI Light',12,'bold'))
+    text.place(x=200,y=75)
+    user=Entry(frame2,width=24,fg='White',border=2,bg='Black',font=('Microsoft YaHei UI Light',12))
+    user.place(x=140,y=115)
+    user.insert(0,'              Username')
+    user.bind('<FocusIn>', on_enter)
+    user.bind('<FocusOut>', on_leave)
+
+    def on_enter(e):
+        code.delete(0, 'end')
+
+    def on_leave(e):
+        name = code.get()
+        if name == '':
+            code.insert(0,'Password')
+
+    text=Label(frame2,text='PASSWORD',fg='White',bg='Black',font=('Microsoft YaHei UI Light',12,'bold'))
+    text.place(x=200,y=150)
+    code=Entry(frame2,width=24,fg='White',border=2,bg='Black',font=('Microsoft YaHei UI Light',12))
+    code.place(x=140,y=185)
+    code.insert(0,'              Password')   
+    code.bind('<FocusIn>', on_enter)
+    code.bind('<FocusOut>', on_leave)
+
+    def on_enter(e):
+        confirm_pass.delete(0, 'end')
+
+    def on_leave(e):
+        name = confirm_pass.get()
+        if name == '':
+            confirm_pass.insert(0,'Confirm Password')
+    text=Label(frame2,text='CONFIRM PASSWORD',fg='white',bg='Black',font=('Microsoft YaHei UI Light',12,'bold'))
+    text.place(x=160,y=225)
+    confirm_pass=Entry(frame2,width=24,fg='White',border=2,bg='Black',font=('Microsoft YaHei UI Light',12))
+    confirm_pass.place(x=140,y=260)
+    confirm_pass.insert(0,'         Confirm Password')   
+    confirm_pass.bind('<FocusIn>', on_enter)
+    confirm_pass.bind('<FocusOut>', on_leave)
+
+    Button(frame2,width=20,pady=3,text='Sign in',bg='#57a1f8',fg='white',font=('Arial',12),border=0,command=signup).place(x=160,y=310)
+
+    window.mainloop()
+
+#FRAME FOR SIGN IN
+frame=Frame(width=850,height=850,bg='#294D61')
+frame.place(x=110,y=0)
+
+title=Label(frame,text='DARK SITE',fg='Orange',bg='#294D61',font=("Cooper Black",30,'bold'))
+title.place(x=300,y=50)
+
+heading=Label(frame,text='Login',fg='Orange',bg='#294D61',font=('Arial Black',23,'bold'))
+heading.place(x=385,y=275)
+#FRAME FOR SIGN IN
+
+#USERNAME
+text=Label(text='USERNAME',fg='white',bg='#294D61',font=('Microsoft YaHei UI Light',12,'bold'))
+text.place(x=490,y=385)
+
+def on_enter(e):
+    user.delete(0, 'end')
+
+def on_leave(e):
+    name = user.get()
+    if name == '':
+        user.insert(0,'Username')
+user=Entry(frame,width=24,fg='White',border=2,bg='#072E33',font=('Microsoft YaHei UI Light',12))
+user.place(x=325,y=355)
+user.insert(0,'              Username')
+user.bind('<FocusIn>', on_enter)
+user.bind('<FocusOut>', on_leave)
+
+#PASSWORD
+text=Label(text='PASSWORD',fg='white',bg='#294D61',font=('Microsoft YaHei UI Light',12,'bold'))
+text.place(x=490,y=455)
+
+def on_enter(e):
+    code.delete(0, 'end')
+
+def on_leave(e):
+    name = code.get()
+    if name == '':
+        code.insert(0,'Password')
+code=Entry(frame,width=24,fg='White',border=2,bg='#072E33',font=('Microsoft YaHei UI Light',12))
+code.place(x=325,y=425)              
+code.insert(0,'              Password')       
+code.bind('<FocusIn>', on_enter)
+code.bind('<FocusOut>', on_leave)
+
+#IMAGE FOR LOGIN
+img = PhotoImage(file='C:\\Users\\Administrator\\Desktop\\Python GUI\\ImagePy\\LOGIN.png')
+Label(image=img,bg='#294D61').place(x=385,y=110)
+
+#SIGN IN BUTTON
+Button(frame,width=20,pady=3,text='Sign in',bg='#57a1f8',fg='white',font=('Arial',12),border=0,command=sign_in).place(x=345,y=500)
+
+#CREATE AN ACCOUNT
+label=Label(frame,text='Create an account?',fg='white',bg='#294D61',font=('Microsoft YaHei UI Light',10))
+label.place(x=670,y=600)
+#CREATE ACCOUNT
+sign_up=Button(frame,width=5,text='Sign up',border=0,bg='#294D61',cursor='hand2',fg='#57a1f8',command=signup_command,font=('Arial',10,'underline'))
+sign_up.place(x=800,y=600)
+
+root.mainloop()
