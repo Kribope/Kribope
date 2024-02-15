@@ -1,9 +1,8 @@
 - 👋 Hi, I’m Iemmanuel
-- 👀 I’m interested in thick thighs
+- 👀 I’m interested in sports
 - 🌱 I’m currently learning java, C++, python and etc.
 - 💞️ I’m looking to collaborate on ABS-CBN
 - 📫 You can reach me via facebook
-- ⚡ Fun fact: 
 
 <!---
 Kribope/Kribope is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
