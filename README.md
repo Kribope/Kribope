@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Kribope
+- 👋 Hi, I’m Iemmanuel
 - 👀 I’m interested in codings
 - 🌱 I’m currently learning java, C++, python and etc.
 - 💞️ I’m looking to collaborate on ABS-CBN
