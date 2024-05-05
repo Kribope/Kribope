@@ -1,7 +1,6 @@
 - 👋 Hi, I’m Iemmanuel
 - 👀 I’m interested in sports and coding
 - 🌱 I’m currently learning java, C++, python and etc.
-- 💞️ I’m looking to collaborate on ABS-CBN
 - 📫 You can reach me via facebook
 
 <!---
